@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:c="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastrar Pessoa</title>
+</h:head>
+<h:body>
+ <h1>Validações Padrão JSF</h1>
+    <h:form>
+        <h:panelGrid columns="3">
+            <h:outputLabel value="Primeiro Nome" for="firstName"></h:outputLabel>
+            <h:inputText value="#{person.firstName}" id="firstName" required="true" label="Primeiro Nome" 
+             requiredMessage="Informe seu Nome"></h:inputText>
+            <h:message for="firstName" style="color: red"></h:message>
+ 
+            <h:outputLabel value="Sobrenome" for="lastName"></h:outputLabel>
+            <h:inputText value="#{person.lastName}" id="lastName" label="Sobrenome"></h:inputText>
+            <h:message for="lastName" style="color: red"></h:message>
+            
+            <h:outputLabel value="CPF" for="cpf"></h:outputLabel>
+            <h:inputText value="#{person.cpf}" id="cpf" required="true" label="CPF" 
+             requiredMessage="Insira um CPF valido">
+            	<c:validateLength minimum="11" maximum="11" for="cpf" id="cpf" />
+            </h:inputText>
+            <h:message for="cpf" style="color:red"></h:message>
+ 
+            <h:outputLabel value="Email" for="email"></h:outputLabel>
+            <h:inputText value="#{person.email}" id="email" required="true" label="E-mail"
+             requiredMessage="Insira um e-mail valido" 
+             validator="#{emailValidation.validateEmail}"></h:inputText>
+            <h:message for="email" style="color:red"></h:message>
+            
+            
+ 
+            <h:commandButton action="#{person.salvar}" value="Submit"></h:commandButton>
+            <br />
+            <br />
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
